@@ -1,0 +1,17 @@
+Checks: >
+  -*,
+  bugprone-*,
+  performance-*,
+  readability-*,
+  modernize-*,
+  cppcoreguidelines-*,
+  misc-*,
+  -bugprone-exception-escape,
+  -modernize-use-trailing-return-type
+
+WarningsAsErrors: ''
+
+HeaderFilterRegex: '^(include|src|tests)/'
+SystemHeaders: false
+
+FormatStyle: file
