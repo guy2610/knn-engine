@@ -1,5 +1,7 @@
 #include <span>
 #include <vector>
+#include <knn/dataset.hpp>
+#include <knn/features.hpp>
 
 int main() {
     const std::vector<int> values{1, 2, 3};

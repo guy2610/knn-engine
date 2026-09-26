@@ -9,14 +9,23 @@ project(
 
 include(cmake/ProjectWarnings.cmake)
 
-add_library(knn_engine INTERFACE)
-
-target_compile_features(knn_engine INTERFACE cxx_std_20)
+add_library(knn_engine
+        src/dataset.cpp
+        include/knn/dataset.hpp
+        include/knn/features.hpp
+)
+target_compile_features(knn_engine PUBLIC cxx_std_20)
 
 target_include_directories(
     knn_engine
-    INTERFACE
+    PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+)
+
+target_link_libraries(
+        knn_engine
+        PRIVATE
+        project_warnings
 )
 
 include(CTest)
