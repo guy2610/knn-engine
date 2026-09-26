@@ -1,21 +1,21 @@
 # Project Specification
 
-This directory contains the functional and technical specification of the system.
+This directory contains the functional specification and verification strategy for the baseline nearest-neighbor system.
 
-The specification should describe what the system must do before defining how the implementation will achieve it.
+The specification describes required behavior before implementation architecture is selected.
 
-Topics may include:
+## Documents
 
-* functional requirements
-* supported workflows
-* inputs and outputs
-* validation rules
-* error behavior
-* constraints and assumptions
-* correctness criteria
-* baseline requirements
-* explicitly deferred extensions
+- `baseline-requirements.md` defines the baseline functional behavior, validation rules, deterministic semantics, and explicitly deferred capabilities.
+- `verification-strategy.md` defines how requirement categories will be verified.
+- `open-questions.md` tracks unresolved behavioral questions that materially affect the specification.
 
-Detailed implementation design should be documented separately when needed.
+Implementation and architectural decisions should be documented separately through design work and ADRs when the relevant milestone requires them.
 
-The initial project specification will be developed during milestone M0.
+## Current Status
+
+The baseline specification is complete for M0.
+
+No detailed class hierarchy, ownership model, search data structure, concurrency architecture, or networking design is prescribed by this specification.
+
+The next milestone is implementation of the correct single-threaded KNN core.

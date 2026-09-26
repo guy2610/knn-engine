@@ -23,7 +23,9 @@ Correctness and measurement come before optimization.
 
 ## Current Status
 
-The project is currently in the engineering bootstrap phase.
+The engineering bootstrap and baseline system specification are complete.
+
+Implementation of the KNN engine has not yet started.
 
 The repository contains:
 

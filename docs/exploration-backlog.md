@@ -501,3 +501,108 @@ Before promoting an exploration item into active work, we should be able to answ
 2. What engineering or learning value does it provide?
 3. What does it depend on?
 4. How will we know whether the experiment or implementation succeeded?
+
+## Frameworks and Enabling Technologies
+
+The project may use external frameworks and libraries when they add engineering capability without replacing mechanisms that the project intentionally aims to study and implement.
+
+### Testing and Benchmarking
+
+- GoogleTest for structured C++ unit and integration testing.
+- Google Benchmark for reproducible microbenchmarks and performance comparisons.
+
+These tools support verification and measurement without replacing core implementation work.
+
+### Python Integration
+
+- pybind11 for exposing the C++ engine to Python.
+- Python may be used for experiment orchestration, dataset preparation, visualization, and ML/CV workflows while keeping the nearest-neighbor engine implemented in C++.
+
+### Computer Vision
+
+- OpenCV for image loading, preprocessing, feature extraction, and traditional computer-vision experiments.
+
+OpenCV should provide the image-processing layer rather than replace the nearest-neighbor engine.
+
+### Deep Learning Inference
+
+Candidates include:
+
+- ONNX Runtime
+- LibTorch
+
+Possible uses include:
+
+- pretrained model inference
+- embedding generation
+- batch inference
+- integration of learned representations with the C++ vector-search engine
+
+The choice between inference frameworks should be made when the requirements of the ML/CV stage are clearer.
+
+### Networking Frameworks
+
+- Boost.Asio may be evaluated after implementing the relevant networking mechanisms directly using sockets and Linux asynchronous I/O.
+
+A possible experiment is:
+
+custom socket/epoll implementation
+versus
+Boost.Asio implementation
+
+This allows the abstraction to be evaluated after the underlying mechanisms are understood.
+
+### RPC
+
+- gRPC may be considered as an additional external API after implementing and understanding the project's native network protocol.
+
+It should not replace the initial protocol-design and socket-programming work.
+
+### Linux Asynchronous I/O
+
+- `io_uring` may be explored after the `epoll` implementation.
+
+Possible comparison:
+
+blocking sockets
+→ epoll
+→ io_uring
+
+The comparison should be driven by measurable workload behavior rather than assuming that a newer interface is automatically better.
+
+### Observability
+
+- OpenTelemetry may be used for structured tracing and metrics.
+- Potential measurements include request latency, queue depth, worker utilization, errors, and request lifecycle timing.
+
+Observability should support performance and systems analysis rather than become a standalone project goal.
+
+### Reference Search Implementations
+
+Possible reference technologies include:
+
+- FAISS
+- hnswlib
+
+These should not replace the project's own nearest-neighbor or ANN implementations.
+
+Instead, they may be used as external baselines for comparing:
+
+- correctness
+- recall
+- latency
+- throughput
+- memory usage
+- index construction cost
+
+### Framework Adoption Principle
+
+Before introducing a significant framework or library, ask:
+
+1. What engineering problem does it solve?
+2. Does it remove a mechanism we intentionally want to learn?
+3. Could it instead be introduced after a from-scratch baseline exists?
+4. What experiment or capability does it enable?
+5. Is the additional dependency justified by measurable value?
+
+Frameworks should augment the system, not hide the mechanisms the project exists to explore.
