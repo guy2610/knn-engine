@@ -31,6 +31,8 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 fi
 
 clang-tidy \
+    src/dataset.cpp \
     tests/toolchain_smoke.cpp \
+    tests/dataset_test.cpp \
     -p "${BUILD_DIR}" \
     "${EXTRA_ARGS[@]}"

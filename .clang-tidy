@@ -7,7 +7,9 @@ Checks: >
   cppcoreguidelines-*,
   misc-*,
   -bugprone-exception-escape,
-  -modernize-use-trailing-return-type
+  -modernize-use-trailing-return-type,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -readability-magic-numbers
 
 WarningsAsErrors: ''
 
