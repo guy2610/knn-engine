@@ -13,7 +13,9 @@ include(CTest)
 add_library(
         knn_engine
         src/dataset.cpp
+        src/distance.cpp
         include/knn/dataset.hpp
+        include/knn/distance.hpp
         include/knn/features.hpp
 )
 
@@ -78,4 +80,19 @@ if(BUILD_TESTING)
 
     include(GoogleTest)
     gtest_discover_tests(dataset_tests)
+
+    add_executable(
+            distance_tests
+            tests/distance_test.cpp
+    )
+
+    target_link_libraries(
+            distance_tests
+            PRIVATE
+            knn_engine
+            GTest::gtest_main
+            project_warnings
+    )
+
+    gtest_discover_tests(distance_tests)
 endif()
