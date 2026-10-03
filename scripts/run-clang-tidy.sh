@@ -32,7 +32,9 @@ fi
 
 clang-tidy \
     src/dataset.cpp \
+    src/distance.cpp \
     tests/toolchain_smoke.cpp \
     tests/dataset_test.cpp \
+    tests/distance_test.cpp \
     -p "${BUILD_DIR}" \
     "${EXTRA_ARGS[@]}"
